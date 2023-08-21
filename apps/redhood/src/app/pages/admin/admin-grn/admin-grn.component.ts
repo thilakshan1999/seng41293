@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppService } from '../../../services/app/app.service';
 import { MatButtonModule } from '@angular/material/button';
+import { Store } from '@ngxs/store';
+import { ShowLoading } from '../../../states/app/app.actions';
 @Component({
   selector: 'seng41293-admin-grn',
   standalone: true,
@@ -15,5 +17,8 @@ export class AdminGrnComponent {
   @Output() 
   update = new EventEmitter<string>();
 
-  constructor(protected appService:AppService){}
+  constructor(private store:Store){}
+  toggle(){
+    this.store.dispatch(new ShowLoading(true))
+  }
 }
