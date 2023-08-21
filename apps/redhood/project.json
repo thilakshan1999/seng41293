@@ -8,16 +8,28 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/redhood",
         "index": "apps/redhood/src/index.html",
         "main": "apps/redhood/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/redhood/tsconfig.app.json",
-        "assets": ["apps/redhood/src/favicon.ico", "apps/redhood/src/assets"],
-        "styles": ["apps/redhood/src/styles.scss"],
-        "scripts": []
+        "assets": [
+          "apps/redhood/src/favicon.ico",
+          "apps/redhood/src/assets",
+          "apps/redhood/src/manifest.webmanifest"
+        ],
+        "styles": [
+          "apps/redhood/src/styles.scss"
+        ],
+        "scripts": [],
+        "serviceWorker": true,
+        "ngswConfigPath": "apps/redhood/ngsw-config.json"
       },
       "configurations": {
         "production": {
@@ -66,14 +78,21 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/redhood/**/*.ts", "apps/redhood/**/*.html"]
+        "lintFilePatterns": [
+          "apps/redhood/**/*.ts",
+          "apps/redhood/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/redhood/jest.config.ts",
         "passWithNoTests": true
