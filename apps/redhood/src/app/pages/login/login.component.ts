@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {Router} from '@angular/router';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'seng41293-login',
@@ -15,15 +15,23 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 export class LoginComponent {
 
-  formGroup= new FormGroup({
-    email:new FormControl(),
-    password:new FormControl(),
+  emailController=new FormControl('thilakshanlk@gmail.com',[
+    Validators.required,
+    Validators.email,
+  ]);
+
+  loginFormGroup= new FormGroup({
+    email:this.emailController,
+    password:new FormControl('RedHood1105@',[
+      Validators.required,
+      Validators.minLength(3),
+    ]),
   })
 
   constructor(private  router:Router){}
 
   onLogin() {
-    console.log(this.formGroup.value);
+    console.log(this.loginFormGroup.valid);
     this.router.navigate(['/admin']);
   }
 }
