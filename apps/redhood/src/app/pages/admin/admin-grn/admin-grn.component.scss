@@ -4,9 +4,20 @@
     justify-content: stretch;
     align-items: center;
     background-color: #d9d9d9;
+    padding-top: 16px ;
 }
 mat-card{
     background-color: #f9f9f9;
     margin: 16px 0;
     width: 90%;
+}
+mat-form-field{
+    width:90%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
