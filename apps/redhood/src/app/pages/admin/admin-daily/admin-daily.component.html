@@ -1,1 +1,11 @@
-<p>admin-daily works!</p>
+<mat-card class="mat-elevation-z8" *ngFor="let dailyStock of dailyStocks$ | async">
+    <mat-card-header>
+        <mat-card-title>
+            {{dailyStock.date}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{dailyStock.amount }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content></mat-card-content>
+</mat-card>
