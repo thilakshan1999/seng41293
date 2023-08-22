@@ -1,5 +1,6 @@
+//import { importProvidersFrom } from '@angular/core';
 import { Route } from '@angular/router';
-//import { LoginComponent } from './pages/login/login.component';
+//import {getAuth,provideAuth} from '@angular/fire/auth'
 
 export const appRoutes: Route[] = [
     {
@@ -7,7 +8,9 @@ export const appRoutes: Route[] = [
         loadComponent:() => 
         import('./pages/login/login.component')
         .then((c)=> c.LoginComponent),
-       // component:LoginComponent,
+        // providers:[
+        //      importProvidersFrom(provideAuth(() => getAuth()))
+        // ],
     },
     {
         path:'admin',

@@ -19,13 +19,10 @@ import { AppState } from './states/app/app.state';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  email$:Observable<string|undefined>
+  email$:Observable<string|undefined|null>
   loading$: Observable<boolean>
   constructor(private store:Store){
     this.email$=this.store.select(AppState.email);
     this.loading$=this.store.select(AppState.loading);
-    // this.email$.subscribe((email)=>{
-    //   console.log(email)
-    // });
   }
 }

@@ -1,15 +1,2 @@
 <button mat-button (click)="toggle()">Toggle Loading</button>
-<br>
-<mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input [formControl]="emailController"  type="mail" matInput>
-    <mat-error *ngIf="emailController.hasError('email') 
-            && !emailController.hasError('required')">
-        Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailController.hasError('required')">
-        Email is <strong>required</strong>
-    </mat-error>
-</mat-form-field>
-<br>
-<button mat-button (click)="change()">Change Mail</button>
+

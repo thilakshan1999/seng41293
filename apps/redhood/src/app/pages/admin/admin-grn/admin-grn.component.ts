@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngxs/store';
-import { ShowEmail, ShowLoading } from '../../../states/app/app.actions';
+import { ShowLoading } from '../../../states/app/app.actions';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
   selector: 'seng41293-admin-grn',
@@ -26,11 +26,5 @@ export class AdminGrnComponent {
   constructor(private store:Store){}
   toggle(){
     this.store.dispatch(new ShowLoading(true))
-  }
-  change(){
-    if(this.emailController.valid){
-          this.store.dispatch(new ShowEmail(this.emailController.value as string));
-    }
-
   }
 }
