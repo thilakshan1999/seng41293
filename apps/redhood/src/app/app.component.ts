@@ -8,7 +8,12 @@ import { Observable } from 'rxjs';
 import { AppState } from './states/app/app.state';
 @Component({
   standalone: true,
-  imports: [ RouterModule,MatProgressBarModule,CommonModule,MatToolbarModule],
+  imports: [ 
+    RouterModule,
+    MatProgressBarModule,
+    CommonModule,
+    MatToolbarModule,
+  ],
   selector: 'seng41293-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
