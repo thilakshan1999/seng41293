@@ -1,0 +1,12 @@
+:host{
+    display: flex;
+    flex-direction:column;
+    justify-content: stretch;
+    align-items: center;
+    background-color: #d9d9d9;
+}
+mat-card{
+    background-color: #f9f9f9;
+    margin: 16px 0;
+    width: 90%;
+}

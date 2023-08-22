@@ -7,7 +7,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import {AngularFireAuth} from '@angular/fire/compat/auth'
 import { Store } from '@ngxs/store';
 import { UpdateUser } from '../../states/app/app.actions';
-import { from, tap } from 'rxjs';
+import { catchError, from, tap, throwError } from 'rxjs';
 @Component({
   selector: 'seng41293-login',
   standalone: true,
@@ -46,7 +46,10 @@ export class LoginComponent {
         if(credential.user)
          this.store.dispatch(new UpdateUser(credential.user));
       }),
-      tap(()=>this.router.navigate(['/admin']))
+      tap(()=>this.router.navigate(['/admin'])),
+      catchError((e)=>{
+        return throwError(() => e);
+      })
     )
     .subscribe();
   }

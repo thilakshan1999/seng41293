@@ -12,6 +12,7 @@ import { NgxsModule } from '@ngxs/store';
 import { AppState } from './states/app/app.state';
 import { provideServiceWorker } from '@angular/service-worker';
 import { AngularFireModule } from '@angular/fire/compat';
+import { HttpClientModule } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
         appId: "1:498362182800:web:e1d09f33660d63cda1bc15"
       })
     ),
+    importProvidersFrom(HttpClientModule),
      provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
