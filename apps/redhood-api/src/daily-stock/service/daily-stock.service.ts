@@ -1,29 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDailyStockDto } from './dto/create-daily-stock.dto';
-import { UpdateDailyStockDto } from './dto/update-daily-stock.dto';
-import { DailyStock } from './entities/daily-stock.entity';
+import { CreateDailyStockDto } from '../dto/create-daily-stock.dto';
+import { UpdateDailyStockDto } from '../dto/update-daily-stock.dto';
+import { DailyStock, DailyStockDocument } from '../schema/daily-stock.entity';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class DailyStockService {
+  constructor(@InjectModel(DailyStock.name) private dailyStockModel: Model<DailyStock>) {}
+  
   create(createDailyStockDto: CreateDailyStockDto) {
     return 'This action adds a new dailyStock';
   }
 
-  findAll():DailyStock[] {
-    return [
-    {
-      date:new Date(),
-      amount:100,
-    },
-    {
-      date:new Date(),
-      amount:200,
-    },
-    {
-      date:new Date(),
-      amount:300,
-    }
-  ];
+  findAll():Promise<DailyStockDocument[]> {
+    return this.dailyStockModel.find().exec();
   }
 
   findOne(id: number) {
