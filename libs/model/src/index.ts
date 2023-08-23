@@ -1,0 +1,1 @@
+export * from './dail-stocks/daily-stocks.interface';

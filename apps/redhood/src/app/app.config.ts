@@ -12,11 +12,12 @@ import { NgxsModule } from '@ngxs/store';
 import { AppState } from './states/app/app.state';
 import { provideServiceWorker } from '@angular/service-worker';
 import { AngularFireModule } from '@angular/fire/compat';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatMomentDateModule} from '@angular/material-moment-adapter'
 import {getAuth,provideAuth} from '@angular/fire/auth'
 import {getFirestore,provideFirestore} from '@angular/fire/firestore'
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { BaseUrlInterceptorService } from './services/_interceptors/base-url-interceptor/base-url-interceptor.service';
 
 
 export const appConfig: ApplicationConfig = {
@@ -51,8 +52,13 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideAuth(()=>getAuth())),
     importProvidersFrom(provideFirestore(()=>getFirestore())),
     importProvidersFrom(HttpClientModule),
+     {
+      provide:HTTP_INTERCEPTORS,
+      useClass:BaseUrlInterceptorService,
+      multi:true,
+    },
     importProvidersFrom(MatMomentDateModule),
-     provideServiceWorker('ngsw-worker.js', {
+    provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
     })],

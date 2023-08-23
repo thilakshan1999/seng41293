@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DailyStockService } from '../../../services/daily-stock/daily-stock.service';
 import { Observable } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
+import { IDailtyStock } from '@seng41293/model';
 
 @Component({
   selector: 'seng41293-admin-daily',
@@ -12,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./admin-daily.component.scss']
 })
 export class AdminDailyComponent {
-  dailyStocks$:Observable<any>;
+  dailyStocks$:Observable<IDailtyStock[]>;
   constructor(private dailyStockService:DailyStockService){
     this.dailyStocks$=this.dailyStockService.findAll();
   }
