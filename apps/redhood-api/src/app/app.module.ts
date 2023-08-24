@@ -1,11 +1,23 @@
 import { Module } from '@nestjs/common';
 import { DailyStockModule } from '../daily-stock/daily-stock.module';
-import { MongooseModule } from '@nestjs/mongoose';
+import { MongooseModule, MongooseModuleOptions } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { getEnvPath } from './app.helper';
 
+const envFilePath:string =getEnvPath(`${__dirname}/environments`);
+console.log(envFilePath);
 @Module({
   imports: [
     DailyStockModule,
-    MongooseModule.forRoot('mongodb://super_admin:REDHOOD1105@localhost:27017/?authSource=admin&readPreference=primary&ssl=false&directConnection=true')
+    ConfigModule.forRoot({envFilePath}),
+    MongooseModule.forRootAsync({
+    imports: [ConfigModule],
+    inject:[ConfigService],
+        useFactory:(configService: ConfigService)=>({
+      uri: configService.get('MONGO_URL'), 
+    }),
+   })
   ],
 })
 export class AppModule {}
+ 

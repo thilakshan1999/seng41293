@@ -14,7 +14,7 @@
         "outputPath": "dist/apps/redhood-api",
         "main": "apps/redhood-api/src/main.ts",
         "tsConfig": "apps/redhood-api/tsconfig.app.json",
-        "assets": ["apps/redhood-api/src/assets"],
+        "assets": ["apps/redhood-api/src/environments"],
         "isolatedConfig": true,
         "webpackConfig": "apps/redhood-api/webpack.config.js"
       },
